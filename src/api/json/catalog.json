@@ -4370,6 +4370,12 @@
         "jsonv4": "https://raw.githubusercontent.com/EHfive/v2ray-jsonschema/main/v4-config.schema.json",
         "jsonv5-preview": "https://raw.githubusercontent.com/EHfive/v2ray-jsonschema/main/v5-config.schema.json"
       }
+    },
+    {
+      "name": "WCS Config",
+      "description": "JSON schema for Wix Component Studio configuration file",
+      "fileMatch": ["wcs.config.json"],
+      "url": "https://json.schemastore.org/wcs.config.json"
     }
   ]
 }

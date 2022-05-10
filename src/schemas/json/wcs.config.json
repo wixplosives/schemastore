@@ -1,0 +1,1119 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "svgLoader": {
+      "type": "string",
+      "enum": [
+        "both",
+        "asset",
+        "svgr"
+      ],
+      "description": "Configures how SVG assets load in WCS.\nRefer to https://component-studio.wixanswers.com/en/article/kb38231 for more information."
+    },
+    "scripts": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/_Users_yardenp_Projects_component-studio-4_packages_build-scripts_dist_universal_types.d.ts__definitions_ConfiguredScript"
+          },
+          "propertyNames": {
+            "type": "string"
+          }
+        }
+      ],
+      "description": "Configures scripts for project users to run from WCS (triggerable and on demand).\nRefer to https://component-studio.wixanswers.com/en/article/kb36621 for more information."
+    },
+    "conditionalClassnamesConfig": {
+      "$ref": "#/definitions/_Users_yardenp_Projects_component-studio-4_packages_classnames-plugins_dist_feature_classnames-plugins.feature.d.ts__definitions_IClassNamesPluginsOptions",
+      "description": "Defines path and target related to the specific third party library the plugin is going to handle."
+    },
+    "resolve": {
+      "type": "object",
+      "properties": {
+        "packageRoots": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ],
+          "description": "Folders to use when searching for packages."
+        },
+        "alias": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "boolean",
+                    "enum": [
+                      false
+                    ]
+                  }
+                ]
+              },
+              "propertyNames": {
+                "type": "string"
+              }
+            }
+          ],
+          "description": "Aliases for package requests.\nRecord key is the request to be mapped, value is the new target.\nAlias is attempted before original request."
+        },
+        "fallback": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "boolean",
+                    "enum": [
+                      false
+                    ]
+                  }
+                ]
+              },
+              "propertyNames": {
+                "type": "string"
+              }
+            }
+          ],
+          "description": "Fallback for package requests.\nRecord key is the request to be mapped, value is the new target.\nOriginal request is attempted before fallback."
+        }
+      },
+      "description": "Includes package assets from additional sources, and creates aliases and fallbacks.\nRefer to https://component-studio.wixanswers.com/en/article/kb26734 for more information.",
+      "propertyNames": {
+        "type": "string",
+        "enum": [
+          "alias",
+          "fallback",
+          "packageRoots"
+        ]
+      }
+    },
+    "boardGlobalSetup": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "description": "Path to a file that will be evaluated before each board is rendered,\nuseful for importing global stylesheets and initializing global variables.\nThe path can be provided through the 'boardGlobalSetup' option of wcs.config.js,\nand it can be either absolute or relative to the project root, in which case it\nneeds to start with './'"
+    },
+    "previewConfiguration": {
+      "$ref": "#/definitions/_Users_yardenp_Projects_component-studio-4_packages_simulation-preview_dist_feature_simulation-preview.feature.d.ts__definitions_PreviewConfiguration",
+      "description": "Configure the rendering environment\nRefer to https://component-studio.wixanswers.com/en/article/kb27825 for more information.\nAllow defining the execution method for rendering simulations and the global variables needed to be defined in the global scope of the simulation being rendered"
+    },
+    "cssCompilation": {
+      "type": "object",
+      "properties": {
+        "activateCssModules": {
+          "type": "boolean"
+        },
+        "cssModulesExt": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "activateCssModules",
+        "cssModulesExt"
+      ],
+      "description": "Enables CSS modules in your project.\nRefer to https://component-studio.wixanswers.com/en/article/kb22420 for more information."
+    },
+    "demoExtensions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "safeRender": {
+      "$ref": "#/definitions/_Users_yardenp_Projects_component-studio-4_packages_editing_dist_universal_types.d.ts__definitions_SafeModeConfig",
+      "description": "Configures maximum rendered elements.\nRefer to https://component-studio.wixanswers.com/en/article/kb34628 for more information."
+    },
+    "newComponent": {
+      "$ref": "#/definitions/_Users_yardenp_Projects_component-studio-4_packages_new-component_dist_universal_types.d.ts__definitions_NewComponentConfig",
+      "description": "Configures default paths for new component and template files.\nRefer to https://component-studio.wixanswers.com/en/article/kb20017 for more information."
+    },
+    "ignoredSubPaths": {
+      "$ref": "#/definitions/_Users_yardenp_Projects_component-studio-4_packages_project_dist_feature_project.feature.d.ts__definitions_ignoredSubPaths",
+      "description": "Specifies project folders to exclude from component search.\nRefer to https://component-studio.wixanswers.com/en/article/kb16622 for more information."
+    },
+    "fileNamingConvention": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "kebab-case",
+            "pascal-case",
+            "camel-case"
+          ]
+        }
+      ],
+      "description": "Configures file-naming convention for new component creation.\nRefer to https://component-studio.wixanswers.com/en/article/kb20131 for more information.\nOptions: 'pascal-case', 'camel-case', 'kebab-case' (default)"
+    },
+    "sassCompilation": {
+      "$ref": "#/definitions/_Users_yardenp_Projects_component-studio-4_packages_sass_dist_feature_types.d.ts__definitions_SassCompilationProjectConfigEntry",
+      "description": "Adds Sass Support to Compilations\nRefer to https://component-studio.wixanswers.com/en/article/kb12816 for more information."
+    },
+    "boardsPath": {
+      "type": "string",
+      "description": "Default directory for new boards, relative to the project root.\nRefer to https://component-studio.wixanswers.com/kb/en/article/kb22014 for more information."
+    },
+    "stylingExtension": {
+      "type": "string",
+      "description": "Default file extension to use for component style sheets in the project ('.css', '.scss', '.st.css', etc...)\nRefer to https://component-studio.wixanswers.com/kb/en/article/kb37226 for more information."
+    },
+    "styleFilesConfig": {
+      "$ref": "#/definitions/_Users_yardenp_Projects_component-studio-4_packages_style-panel_dist_feature_style-panel.feature.d.ts__definitions_IStyleFilesConfig",
+      "description": "Style files config"
+    },
+    "formatting": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/definitions/_Users_yardenp_Projects_component-studio-4_packages_typescript_dist_universal_types.d.ts__definitions_WCSFormattingConfig"
+        }
+      ],
+      "description": "Formats code styling in WCS code drawer.\nRefer to https://component-studio.wixanswers.com/en/article/kb20820 for more information."
+    },
+    "componentsDiscovery": {
+      "$ref": "#/definitions/_Users_yardenp_Projects_component-studio-4_packages_typescript-assets_dist_feature_typescript-assets.feature.d.ts__definitions_ComponentsDiscoveryConfig"
+    }
+  },
+  "definitions": {
+    "_Users_yardenp_Projects_component-studio-4_packages_build-scripts_dist_universal_types.d.ts__definitions_ScriptFromConfig": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "oneOf": [
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "description": {
+          "oneOf": [
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "trigger": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "command": {
+          "type": "string",
+          "description": "Scripts have a `commmand` but not an array of scripts to `run`."
+        }
+      },
+      "required": [
+        "command"
+      ]
+    },
+    "_Users_yardenp_Projects_component-studio-4_packages_build-scripts_dist_universal_types.d.ts__definitions_BatchFromConfig": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "oneOf": [
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "description": {
+          "oneOf": [
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "trigger": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "run": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Batches have a `run` array but not a `commmand`."
+        }
+      },
+      "required": [
+        "run"
+      ]
+    },
+    "_Users_yardenp_Projects_component-studio-4_packages_build-scripts_dist_universal_types.d.ts__definitions_ConfiguredScript": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/_Users_yardenp_Projects_component-studio-4_packages_build-scripts_dist_universal_types.d.ts__definitions_ScriptFromConfig"
+        },
+        {
+          "$ref": "#/definitions/_Users_yardenp_Projects_component-studio-4_packages_build-scripts_dist_universal_types.d.ts__definitions_BatchFromConfig"
+        }
+      ],
+      "description": "The type of configured script users will define in the wcs.config.json."
+    },
+    "_Users_yardenp_Projects_component-studio-4_packages_classnames-plugins_dist_feature_classnames-plugins.feature.d.ts__definitions_IClassNamesPluginsOptions": {
+      "type": "object",
+      "properties": {
+        "classnamesPath": {
+          "type": "string"
+        },
+        "classnamesTarget": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "classnamesPath",
+        "classnamesTarget"
+      ]
+    },
+    "_Users_yardenp_Projects_component-studio-4_node_modules_@file-services_resolve_dist_types.d.ts__definitions_IResolutionFileSystem": {
+      "type": "object",
+      "properties": {
+        "statSync": {
+          "type": "object",
+          "signatures": [
+            {
+              "type": "common/signature",
+              "arguments": [
+                {
+                  "type": "string",
+                  "name": "path"
+                },
+                {
+                  "name": "options",
+                  "oneOf": [
+                    {
+                      "type": "common/undefined"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "throwIfNoEntry": {
+                          "oneOf": [
+                            {
+                              "type": "common/undefined"
+                            },
+                            {
+                              "type": "boolean",
+                              "enum": [
+                                false
+                              ]
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              ],
+              "requiredArguments": [
+                "path"
+              ],
+              "returns": {
+                "oneOf": [
+                  {
+                    "type": "common/undefined"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "isFile": {
+                        "type": "common/function",
+                        "signatures": [
+                          {
+                            "type": "common/signature",
+                            "arguments": [],
+                            "requiredArguments": [],
+                            "returns": {
+                              "type": "boolean"
+                            }
+                          }
+                        ]
+                      },
+                      "isDirectory": {
+                        "type": "common/function",
+                        "signatures": [
+                          {
+                            "type": "common/signature",
+                            "arguments": [],
+                            "requiredArguments": [],
+                            "returns": {
+                              "type": "boolean"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "isFile",
+                      "isDirectory"
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "readFileSync": {
+          "type": "object",
+          "signatures": [
+            {
+              "type": "common/signature",
+              "arguments": [
+                {
+                  "type": "string",
+                  "name": "path"
+                },
+                {
+                  "type": "string",
+                  "enum": [
+                    "utf8"
+                  ],
+                  "name": "encoding"
+                }
+              ],
+              "requiredArguments": [
+                "path",
+                "encoding"
+              ],
+              "returns": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "realpathSync": {
+          "type": "object",
+          "signatures": [
+            {
+              "type": "common/signature",
+              "arguments": [
+                {
+                  "type": "string",
+                  "name": "path"
+                }
+              ],
+              "requiredArguments": [
+                "path"
+              ],
+              "returns": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "dirname": {
+          "type": "object",
+          "signatures": [
+            {
+              "type": "common/signature",
+              "arguments": [
+                {
+                  "type": "string",
+                  "name": "path"
+                }
+              ],
+              "requiredArguments": [
+                "path"
+              ],
+              "returns": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "join": {
+          "type": "object",
+          "signatures": [
+            {
+              "type": "common/signature",
+              "arguments": [],
+              "restArgument": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "name": "paths"
+              },
+              "requiredArguments": [],
+              "returns": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "resolve": {
+          "type": "object",
+          "signatures": [
+            {
+              "type": "common/signature",
+              "arguments": [],
+              "restArgument": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "name": "pathSegments"
+              },
+              "requiredArguments": [],
+              "returns": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "isAbsolute": {
+          "type": "object",
+          "signatures": [
+            {
+              "type": "common/signature",
+              "arguments": [
+                {
+                  "type": "string",
+                  "name": "path"
+                }
+              ],
+              "requiredArguments": [
+                "path"
+              ],
+              "returns": {
+                "type": "boolean"
+              }
+            }
+          ]
+        }
+      },
+      "required": [
+        "statSync",
+        "readFileSync",
+        "realpathSync",
+        "dirname",
+        "join",
+        "resolve",
+        "isAbsolute"
+      ],
+      "description": "Required fs APIs for request resolution.\nCurrently a subset of the sync base file system API."
+    },
+    "_Users_yardenp_Projects_component-studio-4_node_modules_@file-services_resolve_dist_types.d.ts__definitions_IRequestResolverOptions": {
+      "type": "object",
+      "properties": {
+        "fs": {
+          "$ref": "#/definitions/_Users_yardenp_Projects_component-studio-4_node_modules_@file-services_resolve_dist_types.d.ts__definitions_IResolutionFileSystem",
+          "description": "File system to use when resolving requests."
+        },
+        "packageRoots": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ],
+          "description": "Folders to use when searching for packages."
+        },
+        "extensions": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ],
+          "description": "File extensions to try resolving the request with."
+        },
+        "target": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "node",
+                "browser"
+              ]
+            }
+          ],
+          "description": "Whether to prefer the 'browser' field or 'main' field\nin `package.json`."
+        },
+        "resolvedPacakgesCache": {
+          "oneOf": [
+            {
+              "genericArguments": [
+                {
+                  "type": "string"
+                },
+                {
+                  "oneOf": [
+                    {
+                      "type": "common/undefined"
+                    },
+                    {
+                      "$ref": "/Users/yardenp/Projects/component-studio-4/node_modules/@file-services/resolve/dist/types.d.ts#/definitions/IResolvedPackageJson"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "description": "Cache for resolved packages. Map keys are directoryPaths.\nIf not provided, resolver will create an internal Map (still caches)."
+        },
+        "alias": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "boolean",
+                    "enum": [
+                      false
+                    ]
+                  }
+                ]
+              },
+              "propertyNames": {
+                "type": "string"
+              }
+            }
+          ],
+          "description": "Aliases for package requests.\nRecord key is the request to be mapped, value is the new target.\nAlias is attempted before original request."
+        },
+        "fallback": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "boolean",
+                    "enum": [
+                      false
+                    ]
+                  }
+                ]
+              },
+              "propertyNames": {
+                "type": "string"
+              }
+            }
+          ],
+          "description": "Fallback for package requests.\nRecord key is the request to be mapped, value is the new target.\nOriginal request is attempted before fallback."
+        }
+      },
+      "required": [
+        "fs"
+      ]
+    },
+    "_Users_yardenp_Projects_component-studio-4_packages_code-execution_dist_feature_code-execution.feature.d.ts__definitions_PreviewConfiguration": {
+      "type": "object",
+      "properties": {
+        "environmentVariables": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "propertyNames": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "environmentVariables"
+      ]
+    },
+    "_Users_yardenp_Projects_component-studio-4_packages_editing_dist_universal_types.d.ts__definitions_SafeModeConfig": {
+      "type": "object",
+      "properties": {
+        "maxInstancesPerComponent": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "maxInstancesPerComponent"
+      ]
+    },
+    "_Users_yardenp_Projects_component-studio-4_packages_new-component_dist_universal_types.d.ts__definitions_NewComponentConfig": {
+      "type": "object",
+      "properties": {
+        "componentsPath": {
+          "type": "string",
+          "description": "This path is required to create new components through WCS."
+        },
+        "templatesPath": {
+          "oneOf": [
+            {
+              "type": "string"
+            }
+          ],
+          "description": "This path is only required when using custom templates."
+        }
+      },
+      "required": [
+        "componentsPath"
+      ]
+    },
+    "_Users_yardenp_Projects_component-studio-4_packages_project_dist_feature_project.feature.d.ts__definitions_ignoredSubPaths": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "_Users_yardenp_Projects_component-studio-4_packages_sass_dist_feature_types.d.ts__definitions_SassCompilationProjectConfigEntry": {
+      "type": "object",
+      "properties": {
+        "modules": {
+          "type": "object",
+          "properties": {
+            "include": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              ]
+            },
+            "ignore": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              ]
+            }
+          },
+          "required": [
+            "include"
+          ],
+          "description": "compilation mode.\nplain will but all css output on the global scope\nmodules will scope all scss/sass files on the global, and allow using sass with css modules\n  auto will decide mased on the `modules` key to which files"
+        },
+        "compilerRuntime": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "dart-sass",
+            "node-sass"
+          ]
+        },
+        "resolveUrls": {
+          "type": "boolean"
+        },
+        "includePaths": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "required": [
+        "modules",
+        "compilerRuntime",
+        "resolveUrls"
+      ]
+    },
+    "_Users_yardenp_Projects_component-studio-4_packages_simulation-preview_dist_feature_simulation-preview.feature.d.ts__definitions_PreviewConfiguration": {
+      "type": "object",
+      "properties": {
+        "environmentVariables": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "propertyNames": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "environmentVariables"
+      ]
+    },
+    "_Users_yardenp_Projects_component-studio-4_packages_style-panel_dist_feature_style-panel.feature.d.ts__definitions_IStyleFilesConfig": {
+      "type": "object",
+      "properties": {
+        "componentStyleFilePattern": {
+          "oneOf": [
+            {
+              "type": "string"
+            }
+          ],
+          "description": "ext glob pattern of common style files that are used by other components. Defines common rules category."
+        },
+        "commonStyleFilePattern": {
+          "oneOf": [
+            {
+              "type": "string"
+            }
+          ],
+          "description": "ext glob pattern to define what is considered component style file."
+        }
+      }
+    },
+    "_Users_yardenp_Projects_component-studio-4_node_modules_typescript_lib_typescript.d.ts__definitions_ts.SemicolonPreference.Ignore": {
+      "type": "string",
+      "enum": [
+        "ignore"
+      ]
+    },
+    "_Users_yardenp_Projects_component-studio-4_node_modules_typescript_lib_typescript.d.ts__definitions_ts.SemicolonPreference.Insert": {
+      "type": "string",
+      "enum": [
+        "insert"
+      ]
+    },
+    "_Users_yardenp_Projects_component-studio-4_node_modules_typescript_lib_typescript.d.ts__definitions_ts.SemicolonPreference.Remove": {
+      "type": "string",
+      "enum": [
+        "remove"
+      ]
+    },
+    "_Users_yardenp_Projects_component-studio-4_node_modules_typescript_lib_typescript.d.ts__definitions_ts.SemicolonPreference": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/_Users_yardenp_Projects_component-studio-4_node_modules_typescript_lib_typescript.d.ts__definitions_ts.SemicolonPreference.Ignore"
+        },
+        {
+          "$ref": "#/definitions/_Users_yardenp_Projects_component-studio-4_node_modules_typescript_lib_typescript.d.ts__definitions_ts.SemicolonPreference.Insert"
+        },
+        {
+          "$ref": "#/definitions/_Users_yardenp_Projects_component-studio-4_node_modules_typescript_lib_typescript.d.ts__definitions_ts.SemicolonPreference.Remove"
+        }
+      ]
+    },
+    "_Users_yardenp_Projects_component-studio-4_node_modules_typescript_lib_typescript.d.ts__definitions_ts.IndentStyle.None": {
+      "type": "number",
+      "enum": [
+        0
+      ]
+    },
+    "_Users_yardenp_Projects_component-studio-4_node_modules_typescript_lib_typescript.d.ts__definitions_ts.IndentStyle.Block": {
+      "type": "number",
+      "enum": [
+        1
+      ]
+    },
+    "_Users_yardenp_Projects_component-studio-4_node_modules_typescript_lib_typescript.d.ts__definitions_ts.IndentStyle.Smart": {
+      "type": "number",
+      "enum": [
+        2
+      ]
+    },
+    "_Users_yardenp_Projects_component-studio-4_node_modules_typescript_lib_typescript.d.ts__definitions_ts.IndentStyle": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/_Users_yardenp_Projects_component-studio-4_node_modules_typescript_lib_typescript.d.ts__definitions_ts.IndentStyle.None"
+        },
+        {
+          "$ref": "#/definitions/_Users_yardenp_Projects_component-studio-4_node_modules_typescript_lib_typescript.d.ts__definitions_ts.IndentStyle.Block"
+        },
+        {
+          "$ref": "#/definitions/_Users_yardenp_Projects_component-studio-4_node_modules_typescript_lib_typescript.d.ts__definitions_ts.IndentStyle.Smart"
+        }
+      ]
+    },
+    "_Users_yardenp_Projects_component-studio-4_node_modules_typescript_lib_typescript.d.ts__definitions_ts.FormatCodeSettings": {
+      "type": "object",
+      "properties": {
+        "insertSpaceAfterCommaDelimiter": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            }
+          ]
+        },
+        "insertSpaceAfterSemicolonInForStatements": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            }
+          ]
+        },
+        "insertSpaceBeforeAndAfterBinaryOperators": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            }
+          ]
+        },
+        "insertSpaceAfterConstructor": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            }
+          ]
+        },
+        "insertSpaceAfterKeywordsInControlFlowStatements": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            }
+          ]
+        },
+        "insertSpaceAfterFunctionKeywordForAnonymousFunctions": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            }
+          ]
+        },
+        "insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            }
+          ]
+        },
+        "insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            }
+          ]
+        },
+        "insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            }
+          ]
+        },
+        "insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            }
+          ]
+        },
+        "insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            }
+          ]
+        },
+        "insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            }
+          ]
+        },
+        "insertSpaceAfterTypeAssertion": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            }
+          ]
+        },
+        "insertSpaceBeforeFunctionParenthesis": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            }
+          ]
+        },
+        "placeOpenBraceOnNewLineForFunctions": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            }
+          ]
+        },
+        "placeOpenBraceOnNewLineForControlBlocks": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            }
+          ]
+        },
+        "insertSpaceBeforeTypeAnnotation": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            }
+          ]
+        },
+        "indentMultiLineObjectLiteralBeginningOnBlankLine": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            }
+          ]
+        },
+        "semicolons": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/_Users_yardenp_Projects_component-studio-4_node_modules_typescript_lib_typescript.d.ts__definitions_ts.SemicolonPreference"
+            }
+          ]
+        },
+        "baseIndentSize": {
+          "oneOf": [
+            {
+              "type": "number"
+            }
+          ]
+        },
+        "indentSize": {
+          "oneOf": [
+            {
+              "type": "number"
+            }
+          ]
+        },
+        "tabSize": {
+          "oneOf": [
+            {
+              "type": "number"
+            }
+          ]
+        },
+        "newLineCharacter": {
+          "oneOf": [
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "convertTabsToSpaces": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            }
+          ]
+        },
+        "indentStyle": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/_Users_yardenp_Projects_component-studio-4_node_modules_typescript_lib_typescript.d.ts__definitions_ts.IndentStyle"
+            }
+          ]
+        },
+        "trimTrailingWhitespace": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            }
+          ]
+        }
+      }
+    },
+    "_Users_yardenp_Projects_component-studio-4_packages_typescript_dist_universal_types.d.ts__definitions_WCSFormattingConfig": {
+      "type": "object",
+      "properties": {
+        "formatSettings": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/_Users_yardenp_Projects_component-studio-4_node_modules_typescript_lib_typescript.d.ts__definitions_ts.FormatCodeSettings"
+            }
+          ]
+        },
+        "formattingFile": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "editorconfig"
+                  ]
+                },
+                "filePath": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "filePath"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "_Users_yardenp_Projects_component-studio-4_packages_typescript-assets_dist_feature_typescript-assets.feature.d.ts__definitions_ComponentsDiscoveryConfig": {
+      "type": "object",
+      "properties": {
+        "include": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "exclude": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "description": "Scopes component discovery. Use include/exclude glob patterns to configure the search scope.\nRefer to https://component-studio.wixanswers.com/en/article/kb17226 for more information."
+    }
+  }
+}

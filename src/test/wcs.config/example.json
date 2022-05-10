@@ -1,0 +1,123 @@
+{
+  "newComponent": {
+    "componentsPath": "packages/components/components",
+    "templatesPath": "packages/components/component-templates"
+  },
+  "boardsPath": "packages/components/boards",
+  "previewConfiguration": {
+    "environmentVariables": {
+      "NODE_ENV": "development"
+    }
+  },
+  "stylingExtension": ".abc",
+  "formatting": {
+    "formattingFile": {
+      "type": "editorconfig",
+      "filePath": "/src/myeditorconfig.ini"
+    },
+    "formatSettings": {
+      "indentSize": 4,
+      "tabSize": 4,
+      "newLineCharacter": "\n",
+      "convertTabsToSpaces": true,
+      "indentStyle": 2,
+      "insertSpaceAfterConstructor": false,
+      "insertSpaceAfterCommaDelimiter": true,
+      "insertSpaceAfterSemicolonInForStatements": true,
+      "insertSpaceBeforeAndAfterBinaryOperators": true,
+      "insertSpaceAfterKeywordsInControlFlowStatements": true,
+      "insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+      "insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
+      "insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": false,
+      "insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+      "insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": false,
+      "insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": false,
+      "insertSpaceBeforeFunctionParenthesis": false,
+      "placeOpenBraceOnNewLineForFunctions": false,
+      "placeOpenBraceOnNewLineForControlBlocks": false,
+      "semicolons": "ignore",
+      "trimTrailingWhitespace": true
+    }
+  },
+  "safeRender": {
+    "maxInstancesPerComponent": 250
+  },
+  "componentsDiscovery": {
+    "include": [
+      "packages/**"
+    ],
+    "exclude": [
+      "**/test/**"
+    ]
+  },
+  "ignoredSubPaths": [
+    "**/node_modules/**",
+    "**/cjs/**",
+    "**/esm/**",
+    "**/dist/**",
+    ".git/**"
+  ],
+  "boardGlobalSetup": "./packages/board-global-setup.ts",
+  "scripts": {
+    "install": {
+      "title": "Install",
+      "description": "Run install",
+      "command": "yarn",
+      "trigger": [
+        "checkout",
+        "pull",
+        "setup"
+      ]
+    },
+    "build": {
+      "title": "Build",
+      "description": "Build the project",
+      "command": "yarn build"
+    },
+    "clean": {
+      "title": "Clean",
+      "description": "Cleaning installed packages and un-staged changes",
+      "command": "git clean -fdx"
+    },
+    "reset": {
+      "title": "Reset",
+      "description": "Cleaning the repository and installing packages",
+      "run": [
+        "clean",
+        "install"
+      ]
+    }
+  },
+  "sassCompilation": {
+    "modules": {
+      "include": [
+        "packages/**",
+        "packages/*/test/**"
+      ]
+    },
+    "compilerRuntime": "auto",
+    "includePaths": [
+      "node_modules"
+    ],
+    "resolveUrls": true
+  },
+  "fileNamingConvention": "camel-case",
+  "resolve": {
+    "alias": {
+      "@": "packages/"
+    },
+    "fallback": {
+      "paths": "packages/"
+    },
+    "packageRoots": [
+      "packages/",
+      "node_modules"
+    ]
+  },
+  "cssCompilation": {
+    "activateCssModules": true,
+    "cssModulesExt": [
+      ".module.css"
+    ]
+  }
+}
